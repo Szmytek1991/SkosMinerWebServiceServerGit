@@ -5,11 +5,19 @@ using System.Web;
 using System.Net;
 using System.IO;
 using System.Diagnostics;
+using System.Collections;
 
 namespace ServerApplication
 {
     class SkosMiner
     {
+        static List<Person> cache = new List<Person>();
+
+        public static List<Person> Cache
+        {
+            get { return SkosMiner.cache; }
+            set { SkosMiner.cache = value; }
+        } 
         public String getFullBody(string url)
         {
             string pageContent = null;

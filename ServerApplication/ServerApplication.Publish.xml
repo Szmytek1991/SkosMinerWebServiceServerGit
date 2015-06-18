@@ -2,9 +2,9 @@
 <publishData>
   <publishProfile publishUrl="webserviceskosminer.scm.gear.host" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="webserviceskosminer" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="webserviceskosminer - Web Deploy" publishMethod="MSDeploy" replaceMatchingFiles="True" userName="$webserviceskosminer" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0ZRncFOexEyDaBNVEuONmwAAAAACAAAAAAAQZgAAAAEAACAAAACJzC1TVmRCTkRpB5B+/0/Y5QO1QfHgVuewepkktywwWwAAAAAOgAAAAAIAACAAAAAfCxrqGh2seBFLHG9eE8Sw93kITy4Bp2zonq5FzZ/ETIAAAAAp9ewq1JKEsOB6UQF8ECAgLiuf3IP/FMKIdvrNYpN2zxi2Wpueg/FfwiCakQhKhmfH9yfbqQ/9nYDLWHhioG40TCfC6N2PkZmDfL7+ersBVayN67x/UQcJmZgMIDt0hQNRCuH3Q3v9pPY0OixSikBPY5j+z1Wjpas1wzxrVIxwokAAAAB2H2GWPVYQJxRDZI/0HXUZDlPsxKAK3Pvj66YiS6KfNS+42HDlusEi8NwwO2WeSU62tc1TJktNVqtdMEjjFbp3" SelectedForPublish="False" />
   <publishProfile publishUrl="ftp://ftp.gear.host/site/wwwroot" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="webserviceskosminer - FTP" publishMethod="FTP" replaceMatchingFiles="False" userName="webserviceskosminer\$webserviceskosminer" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0ZRncFOexEyDaBNVEuONmwAAAAACAAAAAAAQZgAAAAEAACAAAADTsvINaa3RtZ0RcqzujUvi5Uk8a3fgMVD2FUSyALMcmAAAAAAOgAAAAAIAACAAAACMfvUJNbjIYxOQyXfcqLn1JDPeK4WCCT7cgXgcJnZnTIAAAACEywCgqEF6m0f1JyBi2KzIWbtYHwPMC7NetyB1M0v7il7XVmkh1eeAUKLqRg/Js+wPc3V9j7j25GOLaaySZ4oo1bOqV8tp0A5d53xCgL2HJcWZncQ40l3kJTy3hy4HKO2EYKETCECGX5vLy41tWPkrY5WvZQyjkU0Zpnd86ltUgUAAAAAQfxiZ4u+Vd9hRTNLGeQKS5nrm/13ksXLjKCAZB5zlDz3ZlmWPNbjw1KjjgzDC/ExAaGUdI+NhMN80wbz8WNRm" SelectedForPublish="True">
-    <file relUrl="bin/ServerApplication.dll" publishTime="06/18/2015 21:40:49" />
+    <file relUrl="bin/ServerApplication.dll" publishTime="06/18/2015 23:11:58" />
     <file relUrl="WebService.asmx" publishTime="06/18/2015 19:20:07" />
-    <file relUrl="bin/ServerApplication.pdb" publishTime="06/18/2015 21:40:49" />
-    <file relUrl="Web.config" publishTime="06/18/2015 20:55:52" />
+    <file relUrl="bin/ServerApplication.pdb" publishTime="06/18/2015 23:11:58" />
+    <file relUrl="Web.config" publishTime="06/18/2015 23:12:03" />
   </publishProfile>
 </publishData>

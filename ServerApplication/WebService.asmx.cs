@@ -19,7 +19,29 @@ namespace ServerApplication
         [WebMethod]
         public string getInformationAbout(string name, string surname)
         {
-            //test git
+            bool remove = false;
+            Person pp = null;
+            foreach (Person p in SkosMiner.Cache)
+            {
+                if (p.Name.Equals(name.Trim()) && p.Surname.Equals(surname.Trim()))
+                {
+                    long now = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                    if ((now - p.LastUpdate) < 60000)
+                    {
+                        return p.Info;
+                    }
+                    else
+                    {
+                        remove = true;
+                        pp = p;
+                        break;
+                    }
+                }
+            }
+            if (remove)
+            {
+                SkosMiner.Cache.Remove(pp);
+            }
             SkosMiner sm = new SkosMiner();
             string conn = sm.getLink(name, surname);
             string res = conn;
@@ -35,6 +57,10 @@ namespace ServerApplication
                 res += sm.getGroup(conn) + ";";
                 res += sm.getWorkPlace(conn) + ";";
                 res += sm.getContactInfo(conn);
+                long lastUpdate = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                Person newPerson = new Person(name.Trim(), surname.Trim(), res, lastUpdate);
+                SkosMiner.Cache.Add(newPerson);
+
             }
             return res;
         }
