@@ -20,7 +20,7 @@ namespace ServerApplication
         [WebMethod]
         public string getInformationAbout(string name, string surname)
         {
-            //test git
+            //test git 2
             return string.Empty;
         }
     }
