@@ -19,6 +19,7 @@ namespace ServerApplication
         [WebMethod]
         public string getInformationAbout(string name, string surname)
         {
+            //test git
             SkosMiner sm = new SkosMiner();
             string conn = sm.getLink(name, surname);
             string res = conn;
