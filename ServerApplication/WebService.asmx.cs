@@ -29,11 +29,11 @@ namespace ServerApplication
                 res = "";
                 foreach (string s in sm.getOrgUnit(conn))
                 {
-                    res += s + "|";
+                    res += s + ";";
                 }
-                res += sm.getTitle(conn) + "|";
-                res += sm.getGroup(conn) + "|";
-                res += sm.getWorkPlace(conn) + "|";
+                res += sm.getTitle(conn) + ";";
+                res += sm.getGroup(conn) + ";";
+                res += sm.getWorkPlace(conn) + ";";
                 res += sm.getContactInfo(conn);
             }
             return res;
