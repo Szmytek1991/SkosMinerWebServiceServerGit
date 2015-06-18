@@ -16,12 +16,26 @@ namespace ServerApplication
     // [System.Web.Script.Services.ScriptService]
     public class WebService : System.Web.Services.WebService
     {
-
         [WebMethod]
         public string getInformationAbout(string name, string surname)
         {
-            //test git 2
-            return string.Empty;
+            SkosMiner sm = new SkosMiner();
+            string conn = sm.getLink(name, surname);
+            string res = conn;
+            if (!conn.Equals("Not found"))
+            {
+                conn = sm.getFullBody(conn);
+                res = "";
+                foreach (string s in sm.getOrgUnit(conn))
+                {
+                    res += s + "|";
+                }
+                res += sm.getTitle(conn) + "|";
+                res += sm.getGroup(conn) + "|";
+                res += sm.getWorkPlace(conn) + "|";
+                res += sm.getContactInfo(conn);
+            }
+            return res;
         }
     }
 }

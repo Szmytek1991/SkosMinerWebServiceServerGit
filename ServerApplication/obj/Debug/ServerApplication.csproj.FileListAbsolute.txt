@@ -1,0 +1,5 @@
+C:\Users\Szmytek\Documents\Visual Studio 2010\Projects\SkosMinerWebServiceServerGit\ServerApplication\bin\ServerApplication.dll
+C:\Users\Szmytek\Documents\Visual Studio 2010\Projects\SkosMinerWebServiceServerGit\ServerApplication\bin\ServerApplication.pdb
+C:\Users\Szmytek\Documents\Visual Studio 2010\Projects\SkosMinerWebServiceServerGit\ServerApplication\obj\Debug\ServerApplication.csprojResolveAssemblyReference.cache
+C:\Users\Szmytek\Documents\Visual Studio 2010\Projects\SkosMinerWebServiceServerGit\ServerApplication\obj\Debug\ServerApplication.dll
+C:\Users\Szmytek\Documents\Visual Studio 2010\Projects\SkosMinerWebServiceServerGit\ServerApplication\obj\Debug\ServerApplication.pdb
