@@ -6,17 +6,20 @@ using System.Web.Services;
 
 namespace ServerApplication
 {
-    /// <summary>
-    /// Summary description for WebService
-    /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
-    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-    // [System.Web.Script.Services.ScriptService]
+
+    /*! WebService class contains web service method for gaining information about person */
     public class WebService : System.Web.Services.WebService
     {
         [WebMethod]
+        //! Get information about person
+        /*!
+          \param name string Person name
+          \param surname string Person surname
+          \sa getInformationAbout()
+        */
         public string getInformationAbout(string name, string surname)
         {
             bool remove = false;
@@ -43,26 +46,8 @@ namespace ServerApplication
                 SkosMiner.Cache.Remove(pp);
             }
             SkosMiner sm = new SkosMiner();
-            string conn = sm.getLink(name, surname);
-            string res = conn;
-            if (!conn.Equals("Not found"))
-            {
-                conn = sm.getFullBody(conn);
-                res = "";
-                foreach (string s in sm.getOrgUnit(conn))
-                {
-                    res += s + ";";
-                }
-                res += sm.getTitle(conn) + ";";
-                res += sm.getGroup(conn) + ";";
-                res += sm.getWorkPlace(conn) + ";";
-                res += sm.getContactInfo(conn);
-                long lastUpdate = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-                Person newPerson = new Person(name.Trim(), surname.Trim(), res, lastUpdate);
-                SkosMiner.Cache.Add(newPerson);
 
-            }
-            return res;
+            return sm.getAllInfo(name, surname);
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Collections;
 
 namespace ServerApplication
 {
+    /*! SkosMiner this is base class used for mining skos site and gathering information about person */
     class SkosMiner
     {
         static List<Person> cache = new List<Person>();
@@ -17,8 +18,14 @@ namespace ServerApplication
         {
             get { return SkosMiner.cache; }
             set { SkosMiner.cache = value; }
-        } 
-        public String getFullBody(string url)
+        }
+
+        //! Get full site body for person url
+        /*!
+          \param url string Url to personal information in skos page
+          \sa getFullBody()
+        */
+        private String getFullBody(string url)
         {
             string pageContent = null;
             HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(url);
@@ -30,7 +37,13 @@ namespace ServerApplication
             }
             return pageContent;
         }
-        public String getLink(string name, string surname)
+        //! Get url to personal information in skos page
+        /*!
+          \param name string Person name
+          \param surname string Person surname
+          \sa getLink()
+        */
+        private String getLink(string name, string surname)
         {
             char firstLetter = surname[0];
 
@@ -78,7 +91,12 @@ namespace ServerApplication
             }
             return String.Empty;
         }
-        public List<String> getOrgUnit(string body)
+        //! Get all organizational units for person
+        /*!
+          \param body string full site body for personal information page
+          \sa getOrgUnit()
+        */
+        private List<String> getOrgUnit(string body)
         {
             string[] sep = { "<tr>", "</tr>" };
             String[] str = body.Split(sep, StringSplitOptions.RemoveEmptyEntries);
@@ -107,7 +125,12 @@ namespace ServerApplication
 
             return orgUnits;
         }
-        public String getTitle(string body)
+        //! Get title of person
+        /*!
+          \param body string full site body for personal information page
+          \sa getTitle()
+        */
+        private String getTitle(string body)
         {
             string[] sep = { "<tr>", "</tr>" };
             String[] str = body.Split(sep, StringSplitOptions.RemoveEmptyEntries);
@@ -135,7 +158,12 @@ namespace ServerApplication
             Debug.WriteLine(res);
             return res;
         }
-        public String getGroup(string body)
+        //! Get group information
+        /*!
+          \param body string full site body for personal information page
+          \sa getGroup()
+        */
+        private String getGroup(string body)
         {
             string[] sep = { "<tr>", "</tr>" };
             String[] str = body.Split(sep, StringSplitOptions.RemoveEmptyEntries);
@@ -163,7 +191,12 @@ namespace ServerApplication
             Debug.WriteLine(res);
             return res;
         }
-        public String getWorkPlace(string body)
+        //! Where we can find that person in workplace
+        /*!
+          \param body string full site body for personal information page
+          \sa getWorkPlace()
+        */
+        private String getWorkPlace(string body)
         {
             string[] sep = { "<tr>", "</tr>" };
             String[] str = body.Split(sep, StringSplitOptions.RemoveEmptyEntries);
@@ -191,7 +224,12 @@ namespace ServerApplication
             Debug.WriteLine(res);
             return res;
         }
-        public String getContactInfo(string body)
+        //! Get telephone number
+        /*!
+          \param body string full site body for personal information page
+          \sa getContactInfo()
+        */
+        private String getContactInfo(string body)
         {
             string[] sep = { "<tr>", "</tr>" };
             String[] str = body.Split(sep, StringSplitOptions.RemoveEmptyEntries);
@@ -217,6 +255,34 @@ namespace ServerApplication
                 }
             }
             Debug.WriteLine(res);
+            return res;
+        }
+        //! Collect all information and return it as string
+        /*!
+          \param name string Person name
+          \param surname string Person surname
+          \sa getAllInfo()
+        */
+        public String getAllInfo(string name, string surname)
+        {
+            string conn = getLink(name, surname);
+            string res = conn;
+            if (!conn.Equals("Not found"))
+            {
+                conn = getFullBody(conn);
+                res = "";
+                foreach (string s in getOrgUnit(conn))
+                {
+                    res += s + ";";
+                }
+                res += getTitle(conn) + ";";
+                res += getGroup(conn) + ";";
+                res += getWorkPlace(conn) + ";";
+                res += getContactInfo(conn);
+                long lastUpdate = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                Person newPerson = new Person(name.Trim(), surname.Trim(), res, lastUpdate);
+                SkosMiner.Cache.Add(newPerson);
+            }
             return res;
         }
     }

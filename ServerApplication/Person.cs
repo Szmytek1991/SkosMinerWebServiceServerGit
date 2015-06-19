@@ -5,6 +5,7 @@ using System.Web;
 
 namespace ServerApplication
 {
+    /*! Person class person information used for internal cache */
     public class Person
     {
         string name;
